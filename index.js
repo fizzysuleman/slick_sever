@@ -9,6 +9,7 @@ const loginBuyerAuth=require('./routes/loginBuyerAuth')
 const loginSellerAuth=require('./routes/loginSellerAuth')
 const sellerProfile=require('./routes/sellerProfile')
 const productImages=require('./routes/productImages')
+const addNewPost=require('./routes/addNewPost')
 const verificationBuyerToken=require('./routes/verificationBuyerToken')
 const verificationSellerToken=require('./routes/verificationSellerToken')
 const app=express()
@@ -36,6 +37,7 @@ app.use('/api/loginBuyer',loginBuyerAuth)
 app.use('/api/loginSeller',loginSellerAuth)
 app.use('/api/sellerProfile',sellerProfile)
 app.use('/api/uploadProductImages',productImages)
+app.use('/api/addNewPost',addNewPost)
 
 
 

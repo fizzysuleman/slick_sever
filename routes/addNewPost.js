@@ -19,8 +19,8 @@ router.post('/',auth, async (req, res) => {
         sizeAvailable: req.body.sizes,
         location: req.body.location,
         school: req.body.school,
-        addedToWishList: 123,
-        paidForByCard: 12,
+        addedToWishList: 0,
+        paidForByCard: 0,
         blocked: false,
         imageUrl: req.body.imageUrl
     })

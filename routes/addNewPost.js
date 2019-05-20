@@ -18,11 +18,13 @@ router.post('/',auth, async (req, res) => {
         colorAvailable: req.body.colors,
         sizeAvailable: req.body.sizes,
         location: req.body.location,
+        category:req.body.category,
         school: req.body.school,
         addedToWishList: 0,
         paidForByCard: 0,
         blocked: false,
-        imageUrl: req.body.imageUrl
+        imageUrl: req.body.imageUrl,
+        creationTime:Date()
     })
 
     await user.posts.push(post)

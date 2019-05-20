@@ -19,10 +19,12 @@ const postSchema = new mongoose.Schema({
   sizeAvailable:String,
   location:String,
   school:String,
+  category:String,
   addedToWishList:Number,
   paidForByCard:Number,
   blocked:false,
-  imageUrl:Array
+  imageUrl:Array,
+  creationTime:Date
 });
 
 const registerSchema=new mongoose.Schema({
@@ -102,7 +104,8 @@ const registerSchema=new mongoose.Schema({
       dateOfRegistration:{
         type:Date
       },
-      posts:[postSchema]
+      posts:[postSchema],
+      deletedPosts:[postSchema]
 })
 
 
@@ -146,6 +149,7 @@ function validateUser(user) {
       price:Joi.string().min(1).max(10).required(),
       hashTags: Joi.string().min(1).max(255).required(),
       location:Joi.string().min(1).max(50),
+      category:Joi.string().required(),
       imageUrl: Joi.array().min(1).max(4),
       colors:Joi.string().allow('').optional(),
       sizes:Joi.string().allow('').optional(),

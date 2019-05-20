@@ -23,6 +23,8 @@ const storage = multer.diskStorage({
 //     })
 //   })
 
+const time=Date.now()
+
 router.post('/',auth,async(req,res)=>{
   const upload = multer({ storage }).array('productImages',4)
   upload(req, res, function(err) {
@@ -41,7 +43,7 @@ router.post('/',auth,async(req,res)=>{
 
 
     let res_promises = req.files.map(file => new Promise((resolve, reject) => {
-      cloudinary.uploader.upload(file.path, { use_filename: true, unique_filename: false,folder: `sellers/${req.body.userId}/item/${req.body.itemName}`}, function (error, result) {
+      cloudinary.uploader.upload(file.path, { use_filename: true, unique_filename: false,folder: `sellers/${req.body.userId}/item/${req.body.itemName}/${time}`}, function (error, result) {
           if(error){
             const fs = require('fs')
            fs.unlinkSync(file.path)

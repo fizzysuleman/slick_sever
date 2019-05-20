@@ -11,6 +11,7 @@ const sellerProfile=require('./routes/sellerProfile')
 const productImages=require('./routes/productImages')
 const addNewPost=require('./routes/addNewPost')
 const sellerItems=require('./routes/sellerItems')
+const allPosts=require('./routes/allPosts')
 const verificationBuyerToken=require('./routes/verificationBuyerToken')
 const verificationSellerToken=require('./routes/verificationSellerToken')
 const app=express()
@@ -40,6 +41,7 @@ app.use('/api/sellerProfile',sellerProfile)
 app.use('/api/uploadProductImages',productImages)
 app.use('/api/addNewPost',addNewPost)
 app.use('/api/sellerItems',sellerItems)
+app.use('/api/allPosts',allPosts)
 
 
 

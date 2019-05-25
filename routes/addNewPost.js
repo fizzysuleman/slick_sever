@@ -10,6 +10,8 @@ router.post('/',auth, async (req, res) => {
     } 
 
     const user = await RegisteredSeller.findById(req.body.userId)
+    const brandName=await user.brandName
+
 
     let post= await new Post({
         nameOfItem:req.body.nameOfItem,
@@ -20,11 +22,14 @@ router.post('/',auth, async (req, res) => {
         location: req.body.location,
         category:req.body.category,
         school: req.body.school,
-        addedToWishList: 0,
-        paidForByCard: 0,
+        addedToWishList: [],
+        addedToCart:[],
+        paidForByCard: [],
         blocked: false,
         imageUrl: req.body.imageUrl,
-        creationTime:Date()
+        creationTime:Date(),
+        brandName:brandName,
+        userId:req.body.userId
     })
 
     await user.posts.push(post)

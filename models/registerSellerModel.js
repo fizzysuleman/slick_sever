@@ -20,11 +20,17 @@ const postSchema = new mongoose.Schema({
   location:String,
   school:String,
   category:String,
-  addedToWishList:Number,
-  paidForByCard:Number,
+  addedToWishList:Array,
+  addedToCart:Array,
+  paidForByCard:Array,
   blocked:false,
   imageUrl:Array,
-  creationTime:Date
+  creationTime:Date,
+  brandName:String,
+  userId:String,
+
+},{
+versionKey:false
 });
 
 const registerSchema=new mongoose.Schema({
@@ -104,9 +110,13 @@ const registerSchema=new mongoose.Schema({
       dateOfRegistration:{
         type:Date
       },
+      cart:[postSchema],
+      wishList:[postSchema],
       posts:[postSchema],
       deletedPosts:[postSchema]
-})
+},{
+  versionKey:false
+  })
 
 
 //generating a jwt if the registartion is successful
@@ -118,6 +128,7 @@ registerSchema.methods.generateAuthToken=function(){
   //connecting the model with the schema
 const Sellers=mongoose.model('Sellers',registerSchema)
 const Post=mongoose.model('Post',postSchema)
+const WishList=mongoose.model('WishList',postSchema)
 
 
 //joi validation for the user
@@ -162,6 +173,7 @@ function validateUser(user) {
 
   exports.RegisteredSeller=Sellers;
   exports.Post=Post
+  exports.WishList=WishList
   exports.validate=validateUser
   exports.validatePost=validatePost
   

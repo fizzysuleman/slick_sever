@@ -1,4 +1,5 @@
-const { RegisteredSeller, Post,validatePost } = require('../models/registerSellerModel')
+const { RegisteredSeller} = require('../models/registerSellerModel')
+const { Post,validatePost}=require('../models/postSchema')
 const express = require('express')
 const router = express.Router()
 const auth=require('../middleware/auth')
@@ -9,7 +10,7 @@ router.post('/',auth, async (req, res) => {
         return res.status(400).send(error.details[0].message);
     } 
 
-    const user = await RegisteredSeller.findById(req.body.userId)
+    const user = await RegisteredSeller.findById(req.body.brandId)
     const brandName=await user.brandName
 
 
@@ -26,26 +27,18 @@ router.post('/',auth, async (req, res) => {
         addedToCart:[],
         paidForByCard: [],
         blocked: false,
+        deleted:false,
         imageUrl: req.body.imageUrl,
         creationTime:Date(),
         brandName:brandName,
-        userId:req.body.userId
+        brandId:req.body.brandId
     })
 
-    await user.posts.push(post)
+    await post.save()
 
-    user.save()
-    res.send(user)
+    res.send(post)
 
 })
 
-async function updateAuthor(post){
-    const user = await RegisteredSeller.findById('5cd81f8451bf0c2948fb8ef5')
-
-    await user.posts.push(post)
-   
-    console.log(user)
-}
-//updateAuthor([new Post({nameOfItem:'Jog'}),new Post({nameOfItem:'Jo'})])
 
 module.exports = router

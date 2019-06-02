@@ -17,7 +17,12 @@ const removeFromWishList=require('./routes/removeFromWishList')
 const addToCart=require('./routes/addToCart')
 const removeFromCart=require('./routes/removeFromCart')
 const postAdded=require('./routes/postAdded')
-const itemsAdded=require('./routes/itemsAdded')
+const topFancied=require('./routes/topFancied')
+const search=require('./routes/search')
+const cartItems=require('./routes/cartItems')
+const wishListItems=require('./routes/wishListItems')
+// const searchTags=require('./routes/searchTags')
+
 const verificationBuyerToken=require('./routes/verificationBuyerToken')
 const verificationSellerToken=require('./routes/verificationSellerToken')
 const app=express()
@@ -53,8 +58,11 @@ app.use('/api/removeFromWishList',removeFromWishList)
 app.use('/api/addToCart',addToCart)
 app.use('/api/removeFromCart',removeFromCart)
 app.use('/api/postAdded',postAdded)
-app.use('/api/itemsAdded',itemsAdded)
-
+app.use('/api/topFancied',topFancied)
+app.use('/api/search',search)
+app.use('/api/cartItems',cartItems)
+app.use('/api/wishListItems',wishListItems)
+// app.use('/api/searchTags',searchTags)
 
 
 

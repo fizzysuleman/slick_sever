@@ -5,33 +5,7 @@ const jwt=require('jsonwebtoken')
 //const postSchema=require('./newPostSchema')
 //Schema for the whole registeration of buyers
 
-const postSchema = new mongoose.Schema({
-  nameOfItem: {
-      type: String,
-      minlength: 1,
-      maxlength: 40
-    },
-  price:{
-      type:String
-  },
-  hashTags:String,
-  colorAvailable:String,
-  sizeAvailable:String,
-  location:String,
-  school:String,
-  category:String,
-  addedToWishList:Array,
-  addedToCart:Array,
-  paidForByCard:Array,
-  blocked:false,
-  imageUrl:Array,
-  creationTime:Date,
-  brandName:String,
-  userId:String,
 
-},{
-versionKey:false
-});
 
 const registerSchema=new mongoose.Schema({
     firstName: {
@@ -110,10 +84,8 @@ const registerSchema=new mongoose.Schema({
       dateOfRegistration:{
         type:Date
       },
-      cart:[postSchema],
-      wishList:[postSchema],
-      posts:[postSchema],
-      deletedPosts:[postSchema]
+      // cart:[postSchema],
+      // wishList:[postSchema],
 },{
   versionKey:false
   })
@@ -127,8 +99,7 @@ registerSchema.methods.generateAuthToken=function(){
 
   //connecting the model with the schema
 const Sellers=mongoose.model('Sellers',registerSchema)
-const Post=mongoose.model('Post',postSchema)
-const WishList=mongoose.model('WishList',postSchema)
+//const WishList=mongoose.model('WishList',postSchema)
 
 
 //joi validation for the user
@@ -154,26 +125,10 @@ function validateUser(user) {
     return Joi.validate(user, schema);
   }
 
-  function validatePost(user){
-    const schema={
-      nameOfItem :Joi.string().min(1).max(40).required(),
-      price:Joi.string().min(1).max(10).required(),
-      hashTags: Joi.string().min(1).max(255).required(),
-      location:Joi.string().min(1).max(50),
-      category:Joi.string().required(),
-      imageUrl: Joi.array().min(1).max(4),
-      colors:Joi.string().allow('').optional(),
-      sizes:Joi.string().allow('').optional(),
-      school:Joi.string().allow('').optional(),
-      userId:Joi.string()
-    }
-    return Joi.validate(user, schema);
 
-  }
 
   exports.RegisteredSeller=Sellers;
-  exports.Post=Post
-  exports.WishList=WishList
+  
+  // exports.WishList=WishList
   exports.validate=validateUser
-  exports.validatePost=validatePost
   

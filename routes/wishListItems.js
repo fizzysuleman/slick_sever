@@ -1,0 +1,29 @@
+const {WishList}=require('../models/wishListSchema')
+const {Post}=require('../models/postSchema')
+const express = require('express');
+const mongoose=require('mongoose')
+const auth=require('../middleware/auth')
+const router = express.Router();
+
+
+//getting the token details by the id and return the response to the server
+router.get('/:id',auth,async (req, res) => {
+    let user =await WishList.findOne({userId:req.params.id})
+
+ let userWishListIds=user.postIds
+   const userWishList = await Post.find(
+    {_id:
+        userWishListIds.map((item,index)=>{
+           return mongoose.Types.ObjectId(item)
+
+        })
+
+}
+   )
+res.send(userWishList)
+});
+
+
+
+
+module.exports = router;

@@ -11,7 +11,7 @@ router.get('/:id',auth,async (req, res) => {
     let user =await Cart.findOne({userId:req.params.id})
 
  let userCartIds=user.postIds
-   const userCart = await Post.find(
+   let userCart = await Post.find(
     {_id:
         userCartIds.map((item,index)=>{
            return mongoose.Types.ObjectId(item)
@@ -20,6 +20,9 @@ router.get('/:id',auth,async (req, res) => {
 
 }
    )
+   userCart=userCart.filter((item)=>{
+      return (item.deleted|| item.blocked) !== true 
+    })
 res.send(userCart)
 });
 

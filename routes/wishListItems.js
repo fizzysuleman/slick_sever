@@ -11,7 +11,7 @@ router.get('/:id',auth,async (req, res) => {
     let user =await WishList.findOne({userId:req.params.id})
 
  let userWishListIds=user.postIds
-   const userWishList = await Post.find(
+   let userWishList = await Post.find(
     {_id:
         userWishListIds.map((item,index)=>{
            return mongoose.Types.ObjectId(item)
@@ -20,6 +20,9 @@ router.get('/:id',auth,async (req, res) => {
 
 }
    )
+   userWishList=userWishList.filter((item)=>{
+      return (item.deleted|| item.blocked) !== true 
+    })
 res.send(userWishList)
 });
 

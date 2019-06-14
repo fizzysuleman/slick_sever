@@ -11,12 +11,15 @@ router.get('/',auth,async (req, res) => {
 
   
 
-  post=post.sort(function (a, b) {
+  post=await post.filter((item)=>{
+    return (item.deleted|| item.blocked) !== true 
+  })
+  post=await post.sort(function (a, b) {
     return b.addedToWishList.length - a.addedToWishList.length;
   });
 
  
-  topPost=post.slice(0,10).map(i => {
+  topPost=await post.slice(0,10).map(i => {
     return i
 })
 

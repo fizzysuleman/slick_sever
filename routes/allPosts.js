@@ -6,8 +6,12 @@ const router = express.Router();
 
 //getting the token details by the id and return the response to the server
 router.get('/',auth,async (req, res) => {
-  const sellerPost = await Post.find()
-  if (!sellerPost) return res.status(404).send('Account Info not found');
+  let sellerPost = await Post.find()
+
+  sellerPost=sellerPost.filter((item)=>{
+    return (item.deleted|| item.blocked) !== true 
+  })
+  //if (!sellerPost) return res.status(404).send('Account Info not found');
 
   res.send(sellerPost);
 

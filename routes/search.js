@@ -6,44 +6,53 @@ const router = express.Router();
 
 
 //getting the token details by the id and return the response to the server
-router.get('/tags/:searchTerm',auth,async (req, res) => {
+router.get('/tags',auth,async (req, res) => {
 
-    var regex =new RegExp(req.params.searchTerm,'i')
+    var regex =new RegExp(req.query.searchTerm,'i')
 
     
 
   return Post.find({'$or':
   [{nameOfItem:regex},{hashTags:regex}]}
   ,function(err,q){
-    res.send(q)
+    let tag=q.filter((item)=>{
+      return (item.deleted|| item.blocked) !== true 
+    })
+    res.send(tag)
   })
   
 })
 
 
-router.get('/sellers/:searchTerm',auth,async (req, res) => {
+router.get('/sellers',auth,async (req, res) => {
 
-  var regex =new RegExp(req.params.searchTerm,'i')
+  var regex =new RegExp(req.query.searchTerm,'i')
 
 return RegisteredSeller.find({'$or':
 [{brandName:regex},{firstName:regex},{lastName:regex}]}
 ,function(err,q){
-  res.send(q)
+  let seller=q.filter((item)=>{
+    return item.allowed == true 
+  })
+  res.send(seller)
 })
 
 
 
 })
 
-router.get('/availableIn/:searchTerm/:searchLocation',auth,async (req, res) => {
+router.get('/availableIn',auth,async (req, res) => {
 
-  var regex =new RegExp(req.params.searchTerm,'i')
-  var regexLocation =new RegExp('a','i')
+  var regex =new RegExp(req.query.searchTerm,'i')
   
  return Post.find({'$or':
   [{nameOfItem:regex},{hashTags:regex}]}
   ,function(err,tags){
-    res.send(filter(tags,req.params.searchLocation))
+    let tag=tags.filter((item)=>{
+      return (item.deleted|| item.blocked) !== true 
+    })
+      res.send(filter(tag,req.query.searchLocation))
+    
   })
 
   function filter(q,letter){
@@ -57,14 +66,18 @@ router.get('/availableIn/:searchTerm/:searchLocation',auth,async (req, res) => {
 
   })
 
-  router.get('/availableInSchool/:searchTerm/:searchSchool',auth,async (req, res) => {
+  router.get('/availableInSchool',auth,async (req, res) => {
 
-    var regex =new RegExp(req.params.searchTerm,'i')
+    var regex =new RegExp(req.query.searchTerm,'i')
     
    return Post.find({'$or':
     [{nameOfItem:regex},{hashTags:regex}]}
     ,function(err,tags){
-      res.send(filter(tags,req.params.searchSchool))
+      let tag=tags.filter((item)=>{
+        return (item.deleted|| item.blocked) !== true 
+      })
+        res.send(filter(tag,req.query.searchSchool))
+      
     })
   
     function filter(q,letter){

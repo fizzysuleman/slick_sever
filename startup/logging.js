@@ -21,12 +21,12 @@ module.exports=function(){
               filename: 'logfile.log', handleExceptions: true
             }),
 
-            new winston.transports.MongoDB({ 
+            // new winston.transports.MongoDB({ 
               
-              db: db,
-              level: 'info',
-              handleExceptions: true
-            }),
+            //   db: db,
+            //   level: 'info',
+            //   handleExceptions: true
+            // }),
       
           ],
         //exitOnError:false

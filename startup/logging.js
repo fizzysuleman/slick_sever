@@ -4,7 +4,7 @@ require('express-async-errors')
 const config=require('config')
 
 module.exports=function(){
-  let db=config.get('slick_db')
+  let db=config.get('db')
 
     process.on('unhandledRejection', (ex) => {
         throw (ex)

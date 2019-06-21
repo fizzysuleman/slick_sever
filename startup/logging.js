@@ -4,6 +4,8 @@ require('express-async-errors')
 
 
 module.exports=function(){
+  let db=config.get('slick_db')
+
     process.on('unhandledRejection', (ex) => {
         throw (ex)
       })
@@ -18,8 +20,10 @@ module.exports=function(){
             new winston.transports.File({
               filename: 'logfile.log', handleExceptions: true
             }),
+
             new winston.transports.MongoDB({ 
-              db: 'mongodb://localhost/slicky',
+              
+              db: db,
               level: 'info',
               handleExceptions: true
             }),

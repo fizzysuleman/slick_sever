@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey":"sleek_jwtPrivateKey"
+    "jwtPrivateKey":"sleek_jwtPrivateKey",
+    "db":"slick_db"
 }

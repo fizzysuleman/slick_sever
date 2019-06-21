@@ -10,6 +10,7 @@ const router = express.Router();
 router.get('/:id',auth,async (req, res) => {
     let user =await Cart.findOne({userId:req.params.id})
 
+    if(user){
  let userCartIds=user.postIds
    let userCart = await Post.find(
     {_id:
@@ -24,6 +25,10 @@ router.get('/:id',auth,async (req, res) => {
       return (item.deleted|| item.blocked) !== true 
     })
 res.send(userCart)
+   }
+   else {
+      res.send([])
+   }
 });
 
 

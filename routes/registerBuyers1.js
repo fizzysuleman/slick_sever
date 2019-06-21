@@ -80,7 +80,7 @@ router.post('/',async(req,res)=>{
     else{
         const verificationToken=new VerificationBuyerToken({
             email: req.body.email,
-            token:token,
+            token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
             activated: false,

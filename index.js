@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const winston = require('winston')
+const config =require('config')
 
 require('./startup/logging')()
 require('./startup/routes')(app)
@@ -13,5 +14,6 @@ require('./startup/prod')(app)
 // throw new Error('Testing')
 //console.log(process.env)
 const port = process.env.PORT || 3000
+
 
 app.listen(port, () => winston.info(`Listening to port ${port}`))

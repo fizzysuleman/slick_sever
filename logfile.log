@@ -51,3 +51,5 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T22:33:39.633Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2019-06-22T22:47:27.840Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T22:47:28.873Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2019-06-22T22:55:44.223Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T22:55:45.250Z"}

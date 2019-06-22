@@ -63,3 +63,7 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T23:42:49.737Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2019-06-22T23:42:56.488Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T23:42:57.529Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2019-06-22T23:45:25.686Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T23:45:26.731Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2019-06-22T23:45:28.341Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-22T23:45:29.383Z"}

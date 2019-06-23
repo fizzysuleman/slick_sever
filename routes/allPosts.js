@@ -6,7 +6,14 @@ const router = express.Router();
 
 //getting the token details by the id and return the response to the server
 router.get('/',auth,async (req, res) => {
-  let sellerPost = await Post.find()
+
+  var regex =new RegExp(req.query.category,'i')
+
+  let sellerPost = await Post.find(
+    {'$or':
+  [{category:regex}]}
+  )
+  
 
   sellerPost=sellerPost.filter((item)=>{
     return (item.deleted|| item.blocked) !== true 

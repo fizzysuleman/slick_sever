@@ -43,7 +43,7 @@ module.exports=function(app){
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
 });
-    
+
 app.use('/api/registerBuyer',buyers)
 app.use('/api/registerSeller',sellers)
 app.use('/api/registerBuyer1',registerBuyer1)

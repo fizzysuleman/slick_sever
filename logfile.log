@@ -131,3 +131,5 @@
 {"message":"Cannot read property 'postIds' of null","stack":"TypeError: Cannot read property 'postIds' of null\n    at router.get (C:\\Users\\Faizal\\Desktop\\projects\\server\\routes\\wishListItems.js:57:34)\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error","timestamp":"2019-06-25T07:41:59.861Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2019-06-25T07:48:30.964Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-25T07:48:31.995Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2019-06-25T07:55:03.162Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-06-25T07:55:04.184Z"}

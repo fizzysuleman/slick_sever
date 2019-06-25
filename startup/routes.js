@@ -36,6 +36,14 @@ const verificationSellerToken=require('../routes/verificationSellerToken')
 
 module.exports=function(app){
     app.use(express.json())
+
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+});
+    
 app.use('/api/registerBuyer',buyers)
 app.use('/api/registerSeller',sellers)
 app.use('/api/registerBuyer1',registerBuyer1)

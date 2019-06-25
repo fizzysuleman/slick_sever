@@ -1,4 +1,6 @@
 {
     "jwtPrivateKey":"",
-    "db":"mongodb://localhost/slicky"
+    "db":"mongodb://localhost/slicky",
+    "gmailPassword":"gmailPass"
+
 }

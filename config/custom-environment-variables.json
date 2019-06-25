@@ -1,4 +1,5 @@
 {
     "jwtPrivateKey":"sleek_jwtPrivateKey",
-    "db":"slick_db"
+    "db":"slick_db",
+    "gmailPassword":"gmailPass"
 }

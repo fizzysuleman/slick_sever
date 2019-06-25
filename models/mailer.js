@@ -3,7 +3,10 @@ var nodemailer = require('nodemailer');
 //For sending verifcation code to user
 
 async function verificationCode(email,code,firstname,lastname){
-
+  let pass=config.get('gmailPassword')
+  if(!pass){
+    throw new Error('password not set')
+  }
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
   
@@ -14,7 +17,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'fizzysuleman@gmail.com', // generated ethereal user
-        pass: 'respectislam' // generated ethereal password
+        pass: pass // generated ethereal password
       }
     }); 
   

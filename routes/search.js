@@ -18,13 +18,20 @@ router.get('/tags',auth,async (req, res) => {
     let tag=q.filter((item)=>{
       return (item.deleted|| item.blocked) !== true 
     })
-    // await tag.map((item)=>{
-    //  return delete item.addedToWishList
-    // })
    
-   //delete tag.addedToWishList
-  //  tag= delete tag.addedToCart
-  //  tag= delete tag.paidForByCard
+   tag=tag.map((item)=>{
+      
+        return ({
+          _id:item["_id"],
+          imageUrl:item["imageUrl"],
+          nameOfItem:item["nameOfItem"],
+          price:item["price"],
+          brandName:item["brandName"],
+          brandId:item["brandId"],
+
+        })
+      
+  }) 
     res.send(tag)
   })
   
@@ -36,11 +43,21 @@ router.get('/sellers',auth,async (req, res) => {
   var regex =new RegExp(req.query.searchTerm,'i')
 
 return RegisteredSeller.find({'$or':
-[{brandName:regex},{firstName:regex},{lastName:regex}]}
+[{brandName:regex},{firstName:regex}]}
 ,function(err,q){
   let seller=q.filter((item)=>{
     return item.allowed == true 
   })
+  seller=seller.map((item)=>{
+      
+    return ({
+      _id:item["_id"],
+      brandName:item["brandName"],
+      sells:item["sells"],
+
+    })
+  
+})
   res.send(seller)
 })
 
@@ -58,6 +75,21 @@ router.get('/availableIn',auth,async (req, res) => {
     let tag=tags.filter((item)=>{
       return (item.deleted|| item.blocked) !== true 
     })
+    tag=tag.map((item)=>{
+      
+      return ({
+        _id:item["_id"],
+        imageUrl:item["imageUrl"],
+        nameOfItem:item["nameOfItem"],
+        price:item["price"],
+        location:item["location"],
+        school:item["school"],
+        brandName:item["brandName"],
+        brandId:item["brandId"],
+
+      })
+    
+})
       res.send(filter(tag,req.query.searchLocation))
     
   })
@@ -83,6 +115,21 @@ router.get('/availableIn',auth,async (req, res) => {
       let tag=tags.filter((item)=>{
         return (item.deleted|| item.blocked) !== true 
       })
+      tag=tag.map((item)=>{
+      
+        return ({
+          _id:item["_id"],
+          imageUrl:item["imageUrl"],
+          nameOfItem:item["nameOfItem"],
+          price:item["price"],
+          location:item["location"],
+          school:item["school"],
+          brandName:item["brandName"],
+          brandId:item["brandId"],
+
+        })
+      
+  })
         res.send(filter(tag,req.query.searchSchool))
       
     })

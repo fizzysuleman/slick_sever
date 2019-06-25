@@ -14,10 +14,17 @@ router.get('/tags',auth,async (req, res) => {
 
   return Post.find({'$or':
   [{nameOfItem:regex},{hashTags:regex}]}
-  ,function(err,q){
+  ,async function(err,q){
     let tag=q.filter((item)=>{
       return (item.deleted|| item.blocked) !== true 
     })
+    // await tag.map((item)=>{
+    //  return delete item.addedToWishList
+    // })
+   
+   //delete tag.addedToWishList
+  //  tag= delete tag.addedToCart
+  //  tag= delete tag.paidForByCard
     res.send(tag)
   })
   

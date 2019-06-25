@@ -1,5 +1,5 @@
 var nodemailer = require('nodemailer');
-
+const config=require('config')
 //For sending verifcation code to user
 
 async function verificationCode(email,code,firstname,lastname){

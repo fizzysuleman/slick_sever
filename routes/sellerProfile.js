@@ -10,7 +10,12 @@ router.get('/:id',auth,async (req, res) => {
   const seller = await RegisteredSeller.findById(req.params.id);
   if (!seller) return res.status(404).send('Account Info not found');
 
-  res.send(seller);
+ 
+  let sellerProfile=seller.toJSON()
+  delete sellerProfile.password
+  delete sellerProfile.confirmPassword
+
+  res.send(sellerProfile);
 });
 
 

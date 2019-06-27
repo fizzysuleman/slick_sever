@@ -53,8 +53,8 @@ const registerSchema=new mongoose.Schema({
         maxlength: 255,
         unique:true
       },
-      phoneNumber:{
-          type:Number,
+      phone:{
+          type:String,
           
       },
       terms:{

@@ -45,7 +45,7 @@ if(validateBrandname){
       lastName:req.body.lastName,
       brandName:req.body.brandName,
       email: req.body.email,
-      phoneNumber:req.body.phoneNumber,
+      phone:req.body.phone,
     password:req.body.password,
       confirmPassword:req.body.confirmPassword,
       dateOfBirth:req.body.dateOfBirth,

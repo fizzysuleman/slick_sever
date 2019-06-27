@@ -45,7 +45,7 @@ router.post('/',async(req,res)=>{
       lastName:req.body.lastName,
       username:req.body.username,
       email: req.body.email,
-      phoneNumber:req.body.phoneNumber,
+      phone:req.body.phone,
     password:req.body.password,
       confirmPassword:req.body.confirmPassword,
       dateOfBirth:req.body.dateOfBirth,

@@ -13,7 +13,7 @@ function auth(req,res,next){
         next()
     }
     catch(ex){
-        res.status(500).send(ex)
+        res.send(ex)
     }
 }
 

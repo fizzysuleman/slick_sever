@@ -31,7 +31,8 @@ router.post('/',async(req,res)=>{
     const token=user.generateAuthToken()
     res.json({
         token:token,
-        userId:user._id
+        userId:user._id,
+        account:user.typeOfAccount
     })
 
 })

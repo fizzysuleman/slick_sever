@@ -54,6 +54,7 @@ return RegisteredSeller.find({'$or':
       _id:item["_id"],
       brandName:item["brandName"],
       sells:item["sells"],
+      imageUrl:item["imageUrl"]
 
     })
   

@@ -13,15 +13,6 @@ const storage = multer.diskStorage({
   },
 })
 
-// router.post('/', (req, res, next) => {
-//     const upload = multer({ storage }).array('productImages',4)
-//     upload(req, res, function(err) {
-//       if (err) {
-//         return res.send(err)
-//       }
-//       res.json({files:req.files,body:req.body})
-//     })
-//   })
 
 const time=Date.now()
 

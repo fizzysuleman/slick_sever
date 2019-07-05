@@ -41,6 +41,7 @@ router.post('/',async(req,res)=>{
 
     //putting the values into the model
     let buyers=new RegisteredBuyer({
+        imageUrl:'',
         firstName: req.body.firstName,
       lastName:req.body.lastName,
       username:req.body.username,

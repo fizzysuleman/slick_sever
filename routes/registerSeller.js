@@ -41,6 +41,7 @@ if(validateBrandname){
 
     //putting the values into the model
     let sellers=new RegisteredSeller({
+        imageUrl:'',
         firstName: req.body.firstName,
       lastName:req.body.lastName,
       brandName:req.body.brandName,

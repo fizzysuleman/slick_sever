@@ -6,6 +6,7 @@ const jwt=require('jsonwebtoken')
 //Schema for the whole registeration of buyers
 
 const registerSchema=new mongoose.Schema({
+    imageUrl:String,
     firstName: {
         type: String,
         required: true,

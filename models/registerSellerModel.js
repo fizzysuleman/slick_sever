@@ -8,6 +8,7 @@ const jwt=require('jsonwebtoken')
 
 
 const registerSchema=new mongoose.Schema({
+  imageUrl:String,
     firstName: {
         type: String,
         required: true,

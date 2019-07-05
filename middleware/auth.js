@@ -15,7 +15,7 @@ function auth(req,res,next){
     }
     catch(ex){
         res.send(ex)
-        // console.log(ex)
+        console.log(ex)
     }
 }
 

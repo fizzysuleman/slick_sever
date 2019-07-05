@@ -21,7 +21,8 @@ router.put('/buyer', auth, async (req, res) => {
                 username:req.body.username,
                 email:req.body.email,
                 homeAddress:req.body.homeAddress,
-                phone:req.body.phone
+                phone:req.body.phone,
+                imageUrl:req.body.imageUrl
             }
         })
 
@@ -53,7 +54,8 @@ router.put('/seller', auth, async (req, res) => {
                 phone:req.body.phone,
                 location:req.body.location,
                 sells:req.body.sells,
-                website:req.body.website
+                website:req.body.website,
+                imageUrl:req.body.imageUrl
             }
         })
 
@@ -77,7 +79,8 @@ function validateBuyer(user) {
       phone:Joi.number().required(),
       username:Joi.string().min(1).max(20),
       homeAddress:Joi.string().min(5).max(2024),
-      userId:Joi.string().required()
+      userId:Joi.string().required(),
+    imageUrl:Joi.string()
     };
   
     return Joi.validate(user, schema);
@@ -94,7 +97,9 @@ function validateBuyer(user) {
       location:Joi.string().min(1).max(30).allow('').optional(),
       sells:Joi.string().min(3).max(30).allow('').optional(),
       website:Joi.string().min(3).max(200).allow('').optional(),
-      userId:Joi.string().required()
+      userId:Joi.string().required(),
+      imageUrl:Joi.string()
+
 
     };
   

@@ -46,7 +46,7 @@ const storage = multer.diskStorage({
           const fs = require('fs')
           fs.unlinkSync(path)
           // return image details
-          res.send(image.url)
+          res.json({url:image.url})
         }
       )
     })

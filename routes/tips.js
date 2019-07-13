@@ -6,13 +6,14 @@ const auth=require('../middleware/auth')
 router.post('/',auth, async (req, res) => { 
 
         const tip= await new Tip({
-            message:req.body.message,
+            message:req.body.message
         })
       await tip.save()
+      res.send('Added')
 
 })
 
-router.get('/',auth,(req,res)=>{
+router.get('/',auth,async(req,res)=>{
     const tips= await Tip.find()
 
 

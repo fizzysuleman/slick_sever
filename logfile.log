@@ -26,3 +26,5 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-13T19:45:27.991Z"}
 {"level":"info","message":"Listening to port 3009","timestamp":"2019-07-13T19:50:12.466Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-13T19:50:13.495Z"}
+{"level":"info","message":"Listening to port 3009","timestamp":"2019-07-13T19:53:54.544Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-13T19:53:55.589Z"}

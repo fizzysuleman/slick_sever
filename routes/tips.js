@@ -16,8 +16,10 @@ router.post('/',auth, async (req, res) => {
 router.get('/',auth,async(req,res)=>{
     const tips= await Tip.find()
 
-
-  res.send(tips)
+const tipsMessage=tips.map((item)=>{
+    return item.message
+})
+  res.send(tipsMessage)
 })
 
 

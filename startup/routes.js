@@ -28,7 +28,7 @@ const averageRating=require('../routes/averageRating')
 const deletePost=require('../routes/deletePost')
 const editPost=require('../routes/editPost')
 const updateProfile=require('../routes/updateProfile')
-// const itemPost=require('./routes/itemPost')
+const tips=require('../routes/tips')
 const verificationBuyerToken=require('../routes/verificationBuyerToken')
 const verificationSellerToken=require('../routes/verificationSellerToken')
 
@@ -75,6 +75,8 @@ app.use('/api/deletePost',deletePost)
 app.use('/api/editPost',editPost)
 app.use('/api/updateProfile',updateProfile)
 app.use('/api/uploadProfileImage',profileImage)
+app.use('/api/tips',tips)
+
 
 //middleware for handling error
 app.use(error)

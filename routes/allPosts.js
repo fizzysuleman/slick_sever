@@ -7,12 +7,17 @@ const router = express.Router();
 //getting the token details by the id and return the response to the server
 router.get('/',auth,async (req, res) => {
 
+  let page=req.query.page
+  let pageSize=req.query.pageSize
+
   var regex =new RegExp(req.query.category,'i')
 
   let sellerPost = await Post.find(
     {'$or':
-  [{category:regex}]}
-  )
+  [{category:regex}]},
+   
+  ).skip(0).limit(5)
+ 
   
 
   sellerPost=sellerPost.filter((item)=>{

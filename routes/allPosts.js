@@ -9,6 +9,7 @@ router.get('/',auth,async (req, res) => {
 
   let page=req.query.page
   let pageSize=req.query.pageSize
+  pageSize=parseInt(pageSize)
 
   var regex =new RegExp(req.query.category,'i')
 
@@ -16,7 +17,7 @@ router.get('/',auth,async (req, res) => {
     {'$or':
   [{category:regex}]},
    
-  ).skip(0).limit(5)
+  ).skip(page*pageSize).limit(pageSize)
  
   
 

@@ -17,9 +17,9 @@ router.get('/',auth,async (req, res) => {
     {'$or':
   [{category:regex}]},
    
-  ).skip(page*pageSize).limit(pageSize)
+  ).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
  
-  
+  // { 'created_at' : -1 }
 
   sellerPost=sellerPost.filter((item)=>{
     return (item.deleted|| item.blocked) !== true 

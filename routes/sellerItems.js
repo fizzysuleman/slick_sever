@@ -6,11 +6,17 @@ const router = express.Router();
 
 //getting the token details by the id and return the response to the server
 router.get('/:brandId',auth,async (req, res) => {
-  let sellerItems = await Post.find({brandId:req.params.brandId});
+  let page=req.query.page
+  let pageSize=req.query.pageSize
+  pageSize=parseInt(pageSize)
+
+
+  let sellerItems = await Post.find(
+    {'$or':
+  [{brandId:req.params.brandId,deleted:false}]
+}).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
   
-  sellerItems=sellerItems.filter((item)=>{
-    return item.deleted !== true
-  })
+  
   res.send(sellerItems);
 });
 

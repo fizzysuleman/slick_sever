@@ -15,16 +15,12 @@ router.get('/',auth,async (req, res) => {
 
   let sellerPost = await Post.find(
     {'$or':
-  [{category:regex}]},
+  [{category:regex,deleted:false,blocked:false}]
+}
    
   ).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
  
-  // { 'created_at' : -1 }
-
-  sellerPost=sellerPost.filter((item)=>{
-    return (item.deleted|| item.blocked) !== true 
-  })
-  //if (!sellerPost) return res.status(404).send('Account Info not found');
+  
 
   res.send(sellerPost);
 

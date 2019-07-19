@@ -266,3 +266,7 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-18T18:07:03.280Z"}
 {"level":"info","message":"Listening to port 3009","timestamp":"2019-07-18T20:53:41.571Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-18T20:53:42.639Z"}
+{"level":"info","message":"Listening to port 3009","timestamp":"2019-07-19T22:44:45.715Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-19T22:44:46.764Z"}
+{"level":"info","message":"Listening to port 3009","timestamp":"2019-07-19T22:47:08.138Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-07-19T22:47:09.165Z"}

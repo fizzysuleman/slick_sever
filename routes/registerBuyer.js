@@ -48,7 +48,7 @@ router.post('/',async(req,res)=>{
       email: req.body.email,
       phone:req.body.phone,
     password:req.body.password,
-      confirmPassword:req.body.confirmPassword,
+    //   confirmPassword:req.body.confirmPassword,
       dateOfBirth:req.body.dateOfBirth,
       homeAddress:req.body.homeAddress,
      terms:req.body.terms,
@@ -59,7 +59,7 @@ router.post('/',async(req,res)=>{
 //hashing the password
     const salt=await bcrypt.genSalt(10)
     buyers.password=await bcrypt.hash(buyers.password,salt)
-    buyers.confirmPassword=await bcrypt.hash(buyers.confirmPassword,salt)
+    // buyers.confirmPassword=await bcrypt.hash(buyers.confirmPassword,salt)
 
     //save the user after hashing
     buyers=await buyers.save()

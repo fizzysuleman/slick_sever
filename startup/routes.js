@@ -29,6 +29,11 @@ const deletePost=require('../routes/deletePost')
 const editPost=require('../routes/editPost')
 const updateProfile=require('../routes/updateProfile')
 const tips=require('../routes/tips')
+const changePassword=require('../routes/changePassword')
+const forgotPassword=require('../routes/forgotPassword')
+const forgotPasswordToken=require('../routes/forgotPasswordToken')
+const changeForgottenPassword=require('../routes/changeForgottenPassword')
+
 const verificationBuyerToken=require('../routes/verificationBuyerToken')
 const verificationSellerToken=require('../routes/verificationSellerToken')
 
@@ -76,6 +81,10 @@ app.use('/api/editPost',editPost)
 app.use('/api/updateProfile',updateProfile)
 app.use('/api/uploadProfileImage',profileImage)
 app.use('/api/tips',tips)
+app.use('/api/changePassword',changePassword)
+app.use('/api/forgotPassword',forgotPassword)
+app.use('/api/forgotPasswordToken',forgotPasswordToken)
+app.use('/api/changeForgottenPassword',changeForgottenPassword)
 
 
 //middleware for handling error

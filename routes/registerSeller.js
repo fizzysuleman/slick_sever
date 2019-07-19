@@ -48,7 +48,7 @@ if(validateBrandname){
       email: req.body.email,
       phone:req.body.phone,
     password:req.body.password,
-      confirmPassword:req.body.confirmPassword,
+    //   confirmPassword:req.body.confirmPassword,
       dateOfBirth:req.body.dateOfBirth,
       homeAddress:req.body.homeAddress,
       location:req.body.location,
@@ -63,7 +63,7 @@ if(validateBrandname){
 //hashing the password
     const salt=await bcrypt.genSalt(10)
     sellers.password=await bcrypt.hash(sellers.password,salt)
-    sellers.confirmPassword=await bcrypt.hash(sellers.confirmPassword,salt)
+    // sellers.confirmPassword=await bcrypt.hash(sellers.confirmPassword,salt)
 
     //save the user after hashing
     const successfulMail=await  successful(req.body.email,req.body.firstName,req.body.lastName).catch(console.error)

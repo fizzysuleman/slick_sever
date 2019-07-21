@@ -32,6 +32,21 @@ router.put('/',auth,async (req, res) => {
         }
     }
     else if(seller){
+        if(req.body.newPassword==req.body.confirmNewPassword){
+            //hashing the password
+            const salt=await bcrypt.genSalt(10)
+            let hashedNewPassword=await bcrypt.hash(req.body.newPassword,salt)
+
+            let changePassword=await RegisteredSeller.findOneAndReplace({_id:req.body.userId}, { $set: { password:hashedNewPassword }})
+            if(changePassword){
+                const forgotPasswordToken = await ForgotPasswordToken.findOneAndDelete({userId:req.body.userId})
+                res.send('Password has been successfully changed')
+                
+            }
+        }
+        else{
+            res.send('The passwords dont match,Try again')
+        }
        
     }
     else{

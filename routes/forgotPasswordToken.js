@@ -10,7 +10,7 @@ router.post('/',async (req, res) => {
   const forgotPasswordToken = await ForgotPasswordToken.findOne({userId:req.body.userId,token:req.body.token})
   //.select('email token creationDate expiryDate activated  -_id');;
   if (!forgotPasswordToken){
-    res.status(404).send('The token with the given ID was not found.');
+    res.status(404).send('The token is incorrect');
   } 
   else if(forgotPasswordToken.expiryDate<now ||forgotPasswordToken.used){
       res.send('The token has expired or has been used before')

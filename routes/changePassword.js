@@ -13,7 +13,7 @@ router.put('/',auth,async (req, res) => {
     let buyer=await RegisteredBuyer.findOne({_id:req.body.userId})
     let seller=await RegisteredSeller.findOne({_id:req.body.userId})
 
-    if(buyer){
+     if(buyer){
         let buyerPassword=buyer.password
         const validOldPassword=await bcrypt.compare(req.body.password,buyerPassword)
         
@@ -62,7 +62,7 @@ router.put('/',auth,async (req, res) => {
         }
     }
     else{
-        res.status(404).send('User not found')
+        res.send('User not found')
     }  
     
 })

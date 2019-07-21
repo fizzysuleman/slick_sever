@@ -10,7 +10,7 @@ router.post('/',auth, async (req, res) => {
             timeContacted:Date(),
             userId:req.body.userId,
             sellerId:req.body.sellerId,
-            nameOfItem:req.body.name
+            name:req.body.name
         })
       await contact.save()
       res.send('Saved')

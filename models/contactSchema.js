@@ -8,7 +8,8 @@ const contactSchema = new mongoose.Schema({
   platformContacted:String,
   timeContacted:Date,
   userId:String,
-  sellerId:String
+  sellerId:String,
+  name:String
 });
 
 const Contact=mongoose.model('Contact',contactSchema)

@@ -33,7 +33,7 @@ const changePassword=require('../routes/changePassword')
 const forgotPassword=require('../routes/forgotPassword')
 const forgotPasswordToken=require('../routes/forgotPasswordToken')
 const changeForgottenPassword=require('../routes/changeForgottenPassword')
-
+const contactMade=require('../routes/contactMade')
 const verificationBuyerToken=require('../routes/verificationBuyerToken')
 const verificationSellerToken=require('../routes/verificationSellerToken')
 
@@ -43,12 +43,12 @@ const verificationSellerToken=require('../routes/verificationSellerToken')
 module.exports=function(app){
     app.use(express.json())
 
-    app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-});
+//     app.use(function(req, res, next) {
+//         res.header("Access-Control-Allow-Origin", "*");
+//         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//         next();
+// });
 
 app.use('/api/registerBuyer',buyers)
 app.use('/api/registerSeller',sellers)
@@ -85,6 +85,7 @@ app.use('/api/changePassword',changePassword)
 app.use('/api/forgotPassword',forgotPassword)
 app.use('/api/forgotPasswordToken',forgotPasswordToken)
 app.use('/api/changeForgottenPassword',changeForgottenPassword)
+app.use('/api/contactMade',contactMade)
 
 
 //middleware for handling error

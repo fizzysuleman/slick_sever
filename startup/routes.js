@@ -34,6 +34,10 @@ const forgotPassword=require('../routes/forgotPassword')
 const forgotPasswordToken=require('../routes/forgotPasswordToken')
 const changeForgottenPassword=require('../routes/changeForgottenPassword')
 const contactMade=require('../routes/contactMade')
+const reportItem=require('../routes/reportItem')
+const reportSeller=require('../routes/reportSeller')
+const reportBug=require('../routes/reportBug')
+const contactUs=require('../routes/contactUs')
 const verificationBuyerToken=require('../routes/verificationBuyerToken')
 const verificationSellerToken=require('../routes/verificationSellerToken')
 
@@ -86,6 +90,10 @@ app.use('/api/forgotPassword',forgotPassword)
 app.use('/api/forgotPasswordToken',forgotPasswordToken)
 app.use('/api/changeForgottenPassword',changeForgottenPassword)
 app.use('/api/contactMade',contactMade)
+app.use('/api/reportItem',reportItem)
+app.use('/api/reportSeller',reportSeller)
+app.use('/api/reportBug',reportBug)
+app.use('/api/contactUs',contactUs)
 
 
 //middleware for handling error

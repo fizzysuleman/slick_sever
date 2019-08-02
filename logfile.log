@@ -374,3 +374,7 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-08-02T19:50:52.226Z"}
 {"level":"info","message":"Listening to port 3009","timestamp":"2019-08-02T19:51:45.409Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-08-02T19:51:46.434Z"}
+{"level":"info","message":"Listening to port 3009","timestamp":"2019-08-02T19:54:48.081Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-08-02T19:54:49.109Z"}
+{"level":"info","message":"Listening to port 3009","timestamp":"2019-08-02T19:55:42.823Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2019-08-02T19:55:43.864Z"}

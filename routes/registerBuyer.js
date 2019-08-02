@@ -78,7 +78,13 @@ if(buyers){
 if(successfulMail){
 //if it sent then send a response to the client side with the token to continue    
     const token=buyers.generateAuthToken()
-    res.send(token)
+    res.json({
+        token:token,
+        userId:buyers._id,
+        account:buyers.typeOfAccount,
+        username:buyers.brandName,
+        fullName:buyers.firstName +' '+buyers.lastName
+    })
 }
         }
     

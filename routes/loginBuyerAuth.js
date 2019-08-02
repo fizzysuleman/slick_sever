@@ -32,7 +32,9 @@ router.post('/',async(req,res)=>{
     res.json({
         token:token,
         userId:user._id,
-        account:user.typeOfAccount
+        account:user.typeOfAccount,
+        username:user.username,
+        fullName:user.firstName +' '+user.lastName
     })
 
 })

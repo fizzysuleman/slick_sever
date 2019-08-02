@@ -13,7 +13,7 @@ router.get('/:brandId',auth,async (req, res) => {
 
   let sellerItems = await Post.find(
     {'$or':
-  [{brandId:req.params.brandId,deleted:false}]
+  [{brandId:req.params.brandId,deleted:false,blocked:false}]
 }).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
   
   

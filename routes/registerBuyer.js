@@ -82,7 +82,7 @@ if(successfulMail){
         token:token,
         userId:buyers._id,
         account:buyers.typeOfAccount,
-        username:buyers.brandName,
+        username:buyers.username,
         fullName:buyers.firstName +' '+buyers.lastName
     })
 }

@@ -38,7 +38,7 @@ router.post('/',async(req,res)=>{
     if(test){
         const verificationToken=new VerificationBuyerToken({
             email: req.body.email,
-            token:token,
+            token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
             activated: false,
@@ -60,7 +60,7 @@ router.post('/',async(req,res)=>{
         let tokenId=id._id
         
         const verificationToken=await VerificationBuyerToken.findById(tokenId)
-        verificationToken.token=token
+        verificationToken.token=Math.floor(100000 + Math.random() * 900000)
         verificationToken.creationDate=Date()
         verificationToken.expiryDate=presentDate.setDate(presentDate.getDate() + 1)
         verificationToken.activated=false

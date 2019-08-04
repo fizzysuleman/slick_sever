@@ -18,6 +18,7 @@ router.put('/', auth, async (req, res) => {
                 location:req.body.location,
                 category:req.body.category,
                 school:req.body.school,
+                negotiable:req.body.negotiable
             }
         })
 

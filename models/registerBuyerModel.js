@@ -22,8 +22,8 @@ const registerSchema=new mongoose.Schema({
       username:{
         type: String,
         //required: true,
-        minlength: 1,
-        maxlength: 50
+        minlength: 5,
+        maxlength: 10
       },
       password: {
         type: String,
@@ -91,7 +91,7 @@ function validateUser(user) {
       lastName:Joi.string().min(1).max(50).required(),
       email: Joi.string().min(5).max(255).required().email().required(),
       phone:Joi.number().required(),
-      username:Joi.string().min(1).max(20),
+      username:Joi.string().min(5).max(10),
       password: Joi.string().min(5).max(1024),
       confirmPassword: Joi.string().min(5).max(1024),
       dateOfBirth:Joi.string(),

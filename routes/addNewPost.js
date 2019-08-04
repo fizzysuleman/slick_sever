@@ -31,7 +31,8 @@ router.post('/',auth, async (req, res) => {
         imageUrl: req.body.imageUrl,
         creationTime:Date(),
         brandName:brandName,
-        brandId:req.body.brandId
+        brandId:req.body.brandId,
+        negotiable:req.body.negotiable
     })
 
     await post.save()

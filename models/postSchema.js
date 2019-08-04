@@ -28,6 +28,7 @@ const postSchema = new mongoose.Schema({
   creationTime:Date,
   brandName:String,
   brandId:String,
+  negotiable:Boolean
 
 },{
 versionKey:false
@@ -46,7 +47,8 @@ function validatePost(user){
       colors:Joi.string().allow('').optional(),
       sizes:Joi.string().allow('').optional(),
       school:Joi.string().allow('').optional(),
-      brandId:Joi.string()
+      brandId:Joi.string(),
+      negotiable:Joi.string()
     }
     return Joi.validate(user, schema);
 

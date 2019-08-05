@@ -48,7 +48,7 @@ function validatePost(user){
       sizes:Joi.string().allow('').optional(),
       school:Joi.string().allow('').optional(),
       brandId:Joi.string(),
-      negotiable:Joi.string()
+      negotiable:Joi.bool()
     }
     return Joi.validate(user, schema);
 

@@ -10,14 +10,19 @@ const router = express.Router();
 router.put('/buyer', auth, async (req, res) => {
     const {error}=validateBuyer(req.body);
     let person = await RegisteredBuyer.findOne({username:req.body.username})
+    let person2 = await RegisteredSeller.findOne({brandName:req.body.username})
+
     if(error){
         return res.status(400).send(error.details[0].message)
     
     }
     else{
 
-    if(person){
-        res.status(400).send('Username has already been taken')
+    if(person &&(person._id!=req.body.userId)){
+        res.status(400).send('The Username has already been taken')
+    }
+    else if(person2){
+        res.status(400).send('A seller already has this Username as their Brandname')
     }
     else{
     let updateBuyer = await RegisteredBuyer.findOneAndReplace({_id:req.body.userId},
@@ -50,15 +55,20 @@ router.put('/seller', auth, async (req, res) => {
     const {error}=validateSeller(req.body);
 
     let person = await RegisteredSeller.findOne({brandName:req.body.brandName})
+    let person2 = await RegisteredBuyer.findOne({username:req.body.brandName})
 
     if(error){
         return res.status(400).send(error.details[0].message)
     }
-
+    
     else{
 
-        if(person){
-            res.status(400).send('Brandname has already been taken')
+        if(person &&(person._id!=req.body.userId)){
+            res.status(400).send('The Brandname has already been taken')
+        }
+        else if(person2){
+            res.status(400).send('A buyer already entered the Brandname as their username')
+
         }
         else{
     let updateBuyer = await RegisteredSeller.findOneAndReplace({_id:req.body.userId},

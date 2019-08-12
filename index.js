@@ -13,7 +13,7 @@ require('./startup/prod')(app)
 
 // throw new Error('Testing')
 //console.log(process.env)
-const port = process.env.PORT || 3009
+const port = process.env.PORT || 3000
 
 
 app.listen(port, () => winston.info(`Listening to port ${port}`))

@@ -17,7 +17,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: pass // generated ethereal password
+        pass: '@Allahisgreat123' // generated ethereal password
       }
     }); 
   
@@ -47,7 +47,7 @@ async function verificationCode(email,code,firstname,lastname){
 //for sending succesfully registered to user
 
   async function successfullyRegistered(email,firstname,lastname){
-    let pass=config.get('gmailPassword')
+    let =config.get('gmailPassword')
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
   
@@ -58,7 +58,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: pass // generated ethereal password
+        pass: '@Allahisgreat123' // generated ethereal password
       }
     }); 
   
@@ -97,7 +97,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: pass // generated ethereal password
+        pass: '@Allahisgreat123' // generated ethereal password
       }
     }); 
   

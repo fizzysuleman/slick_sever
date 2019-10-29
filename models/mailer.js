@@ -4,9 +4,9 @@ const config=require('config')
 
 async function verificationCode(email,code,firstname,lastname){
   let pass=config.get('gmailPassword')
-  if(!pass){
-    throw new Error('password not set')
-  }
+  //if(!pass){
+    //throw new Error('password not set')
+  //}
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
   

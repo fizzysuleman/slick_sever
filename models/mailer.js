@@ -16,14 +16,14 @@ async function verificationCode(email,code,firstname,lastname){
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'fizzysuleman@gmail.com', // generated ethereal user
+        user: 'contactslickapp@gmail.com', // generated ethereal user
         pass: pass // generated ethereal password
       }
     }); 
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Slicky👻" <fizzysuleman@gmail.com>', // sender address
+      from: '"Slicky" <contactslickapp@gmail.com>', // sender address
       to: `${email}`, // list of receivers
       subject: "Slicky Verification code ✔", // Subject line
       text: "Hello world?", // plain text body
@@ -57,14 +57,14 @@ async function verificationCode(email,code,firstname,lastname){
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'fizzysuleman@gmail.com', // generated ethereal user
+        user: 'contactslickapp@gmail.com', // generated ethereal user
         pass: pass // generated ethereal password
       }
     }); 
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Slicky👻" <fizzysuleman@gmail.com>', // sender address
+      from: '"Slick👻" <contactslickapp@gmail.com>', // sender address
       to: `${email}`, // list of receivers
       subject: "Successful registration✔", // Subject line
       text: "Hello", // plain text body
@@ -96,14 +96,14 @@ async function verificationCode(email,code,firstname,lastname){
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'fizzysuleman@gmail.com', // generated ethereal user
+        user: 'contactslickapp@gmail.com', // generated ethereal user
         pass: pass // generated ethereal password
       }
     }); 
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Slicky👻" <fizzysuleman@gmail.com>', // sender address
+      from: '"Slicky" <contactslickapp@gmail.com>', // sender address
       to: `${email}`, // list of receivers
       subject: "Forgot Password Token", // Subject line
       text: "Hello", // plain text body

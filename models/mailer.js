@@ -3,7 +3,7 @@ const config=require('config')
 //For sending verifcation code to user
 
 async function verificationCode(email,code,firstname,lastname){
-  let pass=config.get('gmailPassword')
+  //let pass=config.get('gmailPassword')
   //if(!pass){
     //throw new Error('password not set')
   //}

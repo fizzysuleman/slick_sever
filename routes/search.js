@@ -8,6 +8,11 @@ const router = express.Router();
 //getting the token details by the id and return the response to the server
 router.get('/tags',auth,async (req, res) => {
 
+
+  let page=req.query.page
+  let pageSize=req.query.pageSize
+  pageSize=parseInt(pageSize)
+
     var regex =new RegExp(req.query.searchTerm,'i')
 
     
@@ -33,7 +38,7 @@ router.get('/tags',auth,async (req, res) => {
       
   }) 
     res.send(tag)
-  })
+  }).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
   
 })
 

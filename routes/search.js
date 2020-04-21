@@ -17,28 +17,15 @@ router.get('/tags',auth,async (req, res) => {
 
     
 
-  return Post.find({'$or':
-  [{nameOfItem:regex},{hashTags:regex}]}
-  ,async function(err,q){
-    let tag=q.filter((item)=>{
-      return (item.deleted|| item.blocked) !== true 
-    })
-   
-   tag=tag.map((item)=>{
-      
-        return ({
-          _id:item["_id"],
-          imageUrl:item["imageUrl"],
-          nameOfItem:item["nameOfItem"],
-          price:item["price"],
-          brandName:item["brandName"],
-          brandId:item["brandId"],
-
-        })
-      
-  }) 
-    res.send(tag)
-  }).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
+  let filteredPost= Post.find({'$or':
+  [{nameOfItem:regex,deleted:false,blocked:false},{hashTags:regex,deleted:false,blocked:false}]
+}
+  
+) .skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
+    
+res.send(filteredPost)
+  
+    
   
 })
 

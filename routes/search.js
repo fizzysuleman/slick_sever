@@ -9,10 +9,8 @@ const router = express.Router();
 router.get('/tags',auth,async (req, res) => {
 
 
-  let page=req.query.page
-  let pageSize=req.query.pageSize
-  pageSize=parseInt(pageSize)
 
+ 
     var regex =new RegExp(req.query.searchTerm,'i')
 
     
@@ -38,7 +36,7 @@ router.get('/tags',auth,async (req, res) => {
       
   }) 
     res.send(tag)
-  }).skip(page*pageSize).limit(pageSize).sort({'creationTime':-1})
+  })
   
 })
 

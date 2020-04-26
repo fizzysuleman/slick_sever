@@ -16,8 +16,8 @@ async function verificationCode(email,code,firstname,lastname){
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: '@Allahisgreat123' // generated ethereal password
+        user: 'fizzysulemanbackup@gmail.com', // generated ethereal user
+        pass: 'fizzysuleman' // generated ethereal password
       }
     }); 
   

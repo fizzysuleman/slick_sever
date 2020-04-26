@@ -17,7 +17,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: '@Allahisgreat123' // generated ethereal password
+        pass: '@Allahisgreat12344' // generated ethereal password
       }
     }); 
   
@@ -58,7 +58,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: '@Allahisgreat123' // generated ethereal password
+        pass: '@Allahisgreat1234' // generated ethereal password
       }
     }); 
   
@@ -97,7 +97,7 @@ async function verificationCode(email,code,firstname,lastname){
       secure: false, // true for 465, false for other ports
       auth: {
         user: 'contactslickapp@gmail.com', // generated ethereal user
-        pass: '@Allahisgreat123' // generated ethereal password
+        pass: '@Allahisgreat1234' // generated ethereal password
       }
     }); 
   

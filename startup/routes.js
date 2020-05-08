@@ -41,6 +41,7 @@ const contactUs=require('../routes/contactUs')
 const deeplink=require('../routes/deeplink')
 const verificationBuyerToken=require('../routes/verificationBuyerToken')
 const verificationSellerToken=require('../routes/verificationSellerToken')
+const validUser=require('../routes/validUser')
 
 
 
@@ -96,6 +97,7 @@ app.use('/api/deeplink',deeplink)
 app.use('/api/reportSeller',reportSeller)
 app.use('/api/reportBug',reportBug)
 app.use('/api/contactUs',contactUs)
+app.use('/api/validUser',validUser)
 
 
 //middleware for handling error

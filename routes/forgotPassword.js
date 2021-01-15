@@ -109,7 +109,7 @@ router.post('/seller', async (req, res) => {
             const saved = await forgotPasswordToken.save()
     
             if (saved) {
-                const sentMail = await forgotPasswordMailer(validBrandname.email, req.body.brandName, forgotPasswordToken.token).catch(console.error)
+                const sentMail = await forgotPassword(validUsername.email, req.body.username, forgotPasswordToken.token).catch(error=>{res.send(`${error.message}`)})
     
                 if (sentMail) {
                     await res.send(validBrandname._id)
@@ -132,7 +132,7 @@ router.post('/seller', async (req, res) => {
         const saved = await forgotPasswordToken.save()
 
         if (saved) {
-            const sentMail = await forgotPasswordMailer(validBrandname.email, req.body.brandName, forgotPasswordToken.token).catch(console.error)
+            const sentMail = await forgotPassword(validUsername.email, req.body.username, forgotPasswordToken.token).catch(error=>{res.send(`${error.message}`)})
 
             if (sentMail) {
                 await res.send(validBrandname._id)

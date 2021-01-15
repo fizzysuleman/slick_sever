@@ -25,13 +25,20 @@ const tokenSchema=new mongoose.Schema({
         type: Boolean,
         required:true
        },
-       email: {
+       phone: {
         type: String,
         required: true,
-        minlength: 5,
-        maxlength: 255,
+        // minlength: 5,
+        // maxlength: 255,
         unique: false
       },    
+      // email: {
+      //   type: String,
+      //   required: true,
+      //   minlength: 5,
+      //   maxlength: 255,
+      //   unique: false
+      // },    
 
 })
 
@@ -48,7 +55,7 @@ function validateUser(user) {
     firstName: Joi.string().min(1).max(50).required(),
     lastName:Joi.string().min(1).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    phone:JoiPhone.number().required()
+    phone:Joi.number().required(),
 
     
 

@@ -6,6 +6,7 @@ const bcrypt=require('bcrypt')
 const router=express.Router()
 const jwt=require('jsonwebtoken')
 const {successful}=require('../models/mailer')
+const { sendConfirmationMail } = require('../models/mailSender')
 const {VerificationSellerToken}=require('../models/verificationTokenSchema')
 
 
@@ -66,9 +67,10 @@ if(validateBrandname){
     // sellers.confirmPassword=await bcrypt.hash(sellers.confirmPassword,salt)
 
     //save the user after hashing
-    const successfulMail=await  successful(req.body.email,req.body.firstName,req.body.lastName).catch(console.error)
+   // const successfulMail=await  successful(req.body.email,req.body.firstName,req.body.lastName).catch(console.error)
 
-    
+    const successfulMail = await sendConfirmationMail(req.body.email, req.body.firstName, req.body.lastName).catch(error=>{res.send(`${error.message}`)})
+
 
 
 if(successfulMail){

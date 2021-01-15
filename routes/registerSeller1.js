@@ -6,6 +6,8 @@ const express=require('express')
 const bcrypt=require('bcrypt')
 const router=express.Router()
 const {mailer}=require('../models/mailer')
+const { sendToken } = require('../models/messageSender')
+
 const jwt=require('jsonwebtoken')
 
 //generating a random 6 digits number
@@ -23,21 +25,27 @@ router.post('/',async(req,res)=>{
    let validateEmail2= await VerificationSellerToken.findOne({email:req.body.email})
    let validateEmail3=await VerificationBuyerToken.findOne({email:req.body.email})
    let validateEmail4=await RegisteredBuyer.findOne({email:req.body.email})
-   //if it is in the final registration send a message to the client with a status code of 400
-    if(validateEmail){
-        return res.status(400).send('Email already exist')
-    }
-    if(validateEmail4){
-        return res.status(400).send('Email has already been registered by a buyer')
 
-    }
-    if(validateEmail3){
-        let id=await VerificationBuyerToken.findOne({email:req.body.email})
+   //checking if the phone is already present in the final registration or has already started the process before
+   let validatePhone=await RegisteredSeller.findOne({phone: req.body.phone})
+   let validatePhone2= await VerificationSellerToken.findOne({phone: req.body.phone})
+   let validatePhone3=await VerificationBuyerToken.findOne({phone: req.body.phone})
+   let validatePhone4=await RegisteredBuyer.findOne({phone: req.body.phone})
+   //if it is in the final registration send a message to the client with a status code of 400
+   if (validateEmail || validatePhone) {
+    return res.status(400).send('Email or Phone number already exist')
+}
+if (validateEmail4 || validatePhone4) {
+    return res.status(400).send('Email or Phone number has already been registered by a buyer')
+
+}
+    if(validatePhone3){
+        let id=await VerificationBuyerToken.findOne({phone:req.body.phone})
         let tokenId=id._id
         const test=await VerificationBuyerToken.findByIdAndDelete(tokenId)
     if(test){
         const verificationToken=new VerificationSellerToken({
-            email: req.body.email,
+            phone: req.body.phone,
             token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
@@ -45,9 +53,10 @@ router.post('/',async(req,res)=>{
     })
     
     
-    const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-    
-    if(sentMail){
+    //const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
+    const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+
+    if(sentToken){
        await res.send(verificationToken._id)
        await verificationToken.save()
 
@@ -55,8 +64,8 @@ router.post('/',async(req,res)=>{
     }
     }
 //else if it has already started a registration but has not finished, update the details in the db
-    else if(validateEmail2){
-        let id=await VerificationSellerToken.findOne({email:req.body.email})
+    else if(validatePhone2){
+        let id=await VerificationSellerToken.findOne({phone:req.body.phone})
         let tokenId=id._id
         
         const verificationToken=await VerificationSellerToken.findById(tokenId)
@@ -66,9 +75,10 @@ router.post('/',async(req,res)=>{
         verificationToken.activated=false
 
 
-         const sentMail=await  mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-    
-    if(sentMail){
+        // const sentMail=await  mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
+        const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+
+    if(sentToken){
         await res.send(verificationToken._id)
         await verificationToken.save()
 
@@ -79,7 +89,7 @@ router.post('/',async(req,res)=>{
     //else continue the process normally
     else{
         const verificationToken=new VerificationSellerToken({
-            email: req.body.email,
+            phone: req.body.phone,
             token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
@@ -87,9 +97,10 @@ router.post('/',async(req,res)=>{
     })
     
     
-    const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-    
-    if(sentMail){
+    //const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
+    const sentToken = await sendToken(req.body.email, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+
+    if(sentToken){
        await res.send(verificationToken._id)
        await verificationToken.save()
 

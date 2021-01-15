@@ -55,7 +55,7 @@ function validateUser(user) {
     firstName: Joi.string().min(1).max(50).required(),
     lastName:Joi.string().min(1).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    phone:Joi.number().required(),
+    phone:Joi.string().required(),
 
     
 

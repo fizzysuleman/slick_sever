@@ -748,3 +748,7 @@
 {"level":"info","message":"Listening to port 3000","timestamp":"2021-01-15T08:51:37.371Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-15T08:51:39.417Z"}
 {"message":"Cannot set property 'activated' of null","stack":"TypeError: Cannot set property 'activated' of null\n    at C:\\Users\\fizzy\\Documents\\projects\\sleek_sever\\routes\\registerSeller.js:79:32\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)","level":"error","timestamp":"2021-01-15T08:53:38.297Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-15T09:50:45.378Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-15T09:50:47.425Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-15T09:51:19.115Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-15T09:51:21.155Z"}

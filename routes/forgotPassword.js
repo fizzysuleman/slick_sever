@@ -4,7 +4,7 @@ const { RegisteredBuyer } = require('../models/registerBuyerModel')
 const { RegisteredSeller } = require('../models/registerSellerModel')
 const express = require('express')
 const router = express.Router()
-const { forgotPasswordMailer } = require('../models/mailer')
+const { forgotPassword } = require('../models/mailSender')
 
 //generating a random 6 digits number
 var presentDate = new Date()
@@ -38,7 +38,7 @@ router.post('/buyer', async (req, res) => {
             const saved = await forgotPasswordToken.save()
     
             if (saved) {
-                const sentMail = await forgotPasswordMailer(validUsername.email, req.body.username, forgotPasswordToken.token).catch(console.error)
+                const sentMail = await forgotPassword(validUsername.email, req.body.username, forgotPasswordToken.token).catch(error=>{res.send(`${error.message}`)})
     
                 if (sentMail) {
                     await res.send(validUsername._id)
@@ -61,7 +61,7 @@ router.post('/buyer', async (req, res) => {
         const saved = await forgotPasswordToken.save()
 
         if (saved) {
-            const sentMail = await forgotPasswordMailer(validUsername.email, req.body.username, forgotPasswordToken.token).catch(console.error)
+            const sentMail = await forgotPassword(validUsername.email, req.body.username, forgotPasswordToken.token).catch(error=>{res.send(`${error.message}`)})
 
             if (sentMail) {
                 await res.send(validUsername._id)

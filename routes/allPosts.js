@@ -7,6 +7,7 @@ const router = express.Router();
 //getting the token details by the id and return the response to the server
 router.get('/',auth,async (req, res) => {
 
+  try{
   let page=req.query.page
   let pageSize=req.query.pageSize
   pageSize=parseInt(pageSize)
@@ -23,7 +24,10 @@ router.get('/',auth,async (req, res) => {
   
 
   res.send(sellerPost);
-
+  }
+  catch(ex){
+    res.status(500).send('Something send from the server.')
+  }
   
 })
 

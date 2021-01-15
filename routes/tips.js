@@ -14,12 +14,17 @@ router.post('/',auth, async (req, res) => {
 })
 
 router.get('/',auth,async(req,res)=>{
+  try{
     const tips= await Tip.find()
 
 const tipsMessage=tips.map((item)=>{
     return item.message
 })
   res.send(tipsMessage)
+}
+catch (ex) {
+   res.status(500).send('Something failed from the server.')
+}
 })
 
 

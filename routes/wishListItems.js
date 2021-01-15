@@ -8,6 +8,7 @@ const router = express.Router();
 
 //getting the token details by the id and return the response to the server
 router.get('/:id', auth, async (req, res) => {
+   try{
    let user = await WishList.findOne({ userId: req.params.id })
 
 
@@ -31,6 +32,10 @@ router.get('/:id', auth, async (req, res) => {
    else {
       res.send([])
    }
+}
+catch (ex) {
+   res.status(500).send('Something failed from the server.')
+}
 });
 
 

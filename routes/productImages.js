@@ -34,7 +34,7 @@ router.post('/',auth,async(req,res)=>{
 
 
     let res_promises = req.files.map(file => new Promise((resolve, reject) => {
-      cloudinary.uploader.upload(file.path, {quality:50, use_filename: true, unique_filename: false,folder: `sellers/${req.body.userId}/item/${req.body.itemName}/${time}`}, function (error, result) {
+      cloudinary.uploader.upload(file.path, {quality:30, use_filename: true, unique_filename: false,folder: `sellers/${req.body.userId}/item/${req.body.itemName}/${time}`}, function (error, result) {
           if(error){
             const fs = require('fs')
            fs.unlinkSync(file.path)

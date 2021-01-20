@@ -15,7 +15,7 @@ router.post('/',async(req,res)=>{
         return res.status(400).send(error.details[0].message)
     }
 
-    let user=await RegisteredSeller.findOne({brandName:req.body.brandName})
+    let user=await RegisteredSeller.findOne({brandName: {$regex:`^${req.body.brandName}$`,$options:'i'}})
 
     if(!user){
         return res.status(400).send('Invalid brand name or password')

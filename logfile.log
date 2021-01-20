@@ -887,3 +887,13 @@
 {"message":"Post.find(...).bulkWrite is not a function","stack":"TypeError: Post.find(...).bulkWrite is not a function\n    at C:\\Users\\fizzy\\Documents\\projects\\sleek_sever\\routes\\updateProfile.js:93:70\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)","level":"error","timestamp":"2021-01-20T06:48:43.760Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T06:49:53.475Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T06:49:55.513Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T06:51:09.860Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T06:51:11.907Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:01:32.294Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:01:34.331Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:07:04.674Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:07:06.710Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:08:00.580Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:08:02.616Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:11:28.858Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:11:30.887Z"}

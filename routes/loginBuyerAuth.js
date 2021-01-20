@@ -15,7 +15,7 @@ router.post('/',async(req,res)=>{
         return res.status(400).send(error.details[0].message)
     }
 
-    let user=await RegisteredBuyer.findOne({username:req.body.username})
+    let user=await RegisteredBuyer.findOne({username: {$regex:`^${req.body.username}$`,$options:'i'}})
 
     if(!user){
         return res.status(400).send('Invalid username or password')

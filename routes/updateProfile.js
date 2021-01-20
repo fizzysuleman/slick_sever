@@ -1,5 +1,7 @@
 const {RegisteredBuyer}=require('../models/registerBuyerModel')
 const {RegisteredSeller}=require('../models/registerSellerModel')
+const {Post}=require('../models/postSchema')
+
 const Joi=require('joi')
 const express = require('express');
 const auth = require('../middleware/auth')
@@ -87,8 +89,15 @@ router.put('/seller', auth, async (req, res) => {
                 imageUrl:req.body.imageUrl
             }
         })
+    //update brandName in posts
+    let updateSellersPost=await Post.find({brandId:req.body.userId}).updateMany({$set:
+        {
+            brandName:req.body.brandName
+        }})
+        
+       
 
-    if (updateBuyer) {
+    if (updateBuyer&&updateSellersPost) {
         res.send('Profile Updated')
     }
     else {

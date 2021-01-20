@@ -26,7 +26,7 @@ router.get('/',auth,async (req, res) => {
   res.send(sellerPost);
   }
   catch(ex){
-    res.status(500).send('Something send from the server.')
+    res.status(500).send('Something failed from the server.')
   }
   
 })

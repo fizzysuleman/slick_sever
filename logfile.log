@@ -897,3 +897,5 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:08:02.616Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:11:28.858Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:11:30.887Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-20T07:12:10.056Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-20T07:12:12.092Z"}

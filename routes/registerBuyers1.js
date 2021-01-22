@@ -17,6 +17,7 @@ var presentDate = new Date()
 
 //saving the verfication token details 
 router.post('/', async (req, res) => {
+    sendToken();
     const { error } = validate(req.body)
     if (error) {
         return res.status(400).send(error.details[0].message);

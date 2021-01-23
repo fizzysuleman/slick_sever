@@ -42,7 +42,7 @@ if (validateEmail4 || validatePhone4) {
 
 }
     if(validateEmail3){
-        let id=await VerificationBuyerToken.findOne({email:req.body.email})
+        let id=await VerificationBuyerToken.findOne({email:{$regex:`^${req.body.email}$`,$options:'i'}})
         let tokenId=id._id
         const test=await VerificationBuyerToken.findByIdAndDelete(tokenId)
     if(test){
@@ -67,7 +67,7 @@ if (validateEmail4 || validatePhone4) {
     }
 //else if it has already started a registration but has not finished, update the details in the db
     else if(validateEmail2){
-        let id=await VerificationSellerToken.findOne({email:req.body.email})
+        let id=await VerificationSellerToken.findOne({email:{$regex:`^${req.body.email}$`,$options:'i'}})
         let tokenId=id._id
         
         const verificationToken=await VerificationSellerToken.findById(tokenId)

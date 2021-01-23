@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 
     }
     if (validateEmail3) {
-        let id = await VerificationSellerToken.findOne({ email: req.body.email })
+        let id = await VerificationSellerToken.findOne({ email:{$regex:`^${req.body.email}$`,$options:'i'}})
         let tokenId = id._id
         const test = await VerificationSellerToken.findByIdAndDelete(tokenId)
         if (test) {
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
     }
     //else if it has already started a registration but has not finished, update the details in the db
     else if (validateEmail2) {
-        let id = await VerificationBuyerToken.findOne({ email: req.body.email })
+        let id = await VerificationBuyerToken.findOne({ email:{$regex:`^${req.body.email}$`,$options:'i'}})
         let tokenId = id._id
 
         const verificationToken = await VerificationBuyerToken.findById(tokenId)

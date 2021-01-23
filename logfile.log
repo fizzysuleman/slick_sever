@@ -926,3 +926,7 @@
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-23T21:05:19.602Z"}
 {"level":"info","message":"Listening to port 3000","timestamp":"2021-01-23T21:16:47.687Z"}
 {"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-23T21:16:49.727Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-23T22:04:48.505Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-23T22:04:50.543Z"}
+{"level":"info","message":"Listening to port 3000","timestamp":"2021-01-23T22:10:10.084Z"}
+{"level":"info","message":"Connected to  mongodb://localhost/slicky ","timestamp":"2021-01-23T22:10:12.138Z"}

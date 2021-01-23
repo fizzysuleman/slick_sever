@@ -11,9 +11,8 @@ const router = express.Router();
 //getting the token details by the id and return the response to the server
 router.put('/buyer', auth, async (req, res) => {
     const {error}=validateBuyer(req.body);
-    let person = await RegisteredBuyer.findOne({username:req.body.username})
-    let person2 = await RegisteredSeller.findOne({brandName:req.body.username})
-
+    let person = await RegisteredBuyer.findOne({username:{$regex:`^${req.body.username}$`,$options:'i'}})
+    let person2 = await RegisteredSeller.findOne({brandName:{$regex:`^${req.body.username}$`,$options:'i'}})
     if(error){
         return res.status(400).send(error.details[0].message)
     

@@ -23,12 +23,13 @@ router.post('/', async (req, res) => {
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
-    //checking if the email is already present in the final registration or has already started the process before
-    let validateEmail = await RegisteredBuyer.findOne({ email: req.body.email })
-       let validateEmail2= await VerificationBuyerToken.findOne({email:req.body.email})
-        let validateEmail3=await VerificationSellerToken.findOne({email:req.body.email})
-    let validateEmail4 = await RegisteredSeller.findOne({ email: req.body.email })
 
+
+    //checking if the email is already present in the final registration or has already started the process before
+    let validateEmail = await RegisteredBuyer.findOne({ email: {$regex:`^${req.body.email}$`,$options:'i'}})
+       let validateEmail2= await VerificationBuyerToken.findOne({email:{$regex:`^${req.body.email}$`,$options:'i'}})
+        let validateEmail3=await VerificationSellerToken.findOne({email:{$regex:`^${req.body.email}$`,$options:'i'}})
+    let validateEmail4 = await RegisteredSeller.findOne({ email: {$regex:`^${req.body.email}$`,$options:'i'}})
     //checking if the phone number is already present in the final registration or has already started the process before
     let validatePhone = await RegisteredBuyer.findOne({ phone: req.body.phone })
     let validatePhone2 = await VerificationBuyerToken.findOne({ phone: req.body.phone })

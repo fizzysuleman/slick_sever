@@ -19,10 +19,11 @@ router.post('/', async (req, res) => {
         return res.status(400).send(error.details[0].message);
     }
     //checking if there is any exisiting username / email with the one the user entered
-    let validateBuyerEmail = await RegisteredBuyer.findOne({ email: req.body.email })
-    let validateSellerEmail = await RegisteredSeller.findOne({ email: req.body.email })
-    let validateUsername = await RegisteredBuyer.findOne({ username: req.body.username })
-    let validateBrandname = await RegisteredSeller.findOne({ brandName: req.body.username })
+
+    let validateBuyerEmail = await RegisteredBuyer.findOne({ email:  {$regex:`^${req.body.email}$`,$options:'i'}})
+    let validateSellerEmail = await RegisteredSeller.findOne({ email: {$regex:`^${req.body.email}$`,$options:'i'}})
+    let validateUsername = await RegisteredBuyer.findOne({ username:  {$regex:`^${req.body.username}$`,$options:'i'}})
+    let validateBrandname = await RegisteredSeller.findOne({ brandName:  {$regex:`^${req.body.username}$`,$options:'i'}})
     //if the username or email exist send a message with a status code 400
     if (validateUsername) {
         return res.status(400).send('Username is already exists')

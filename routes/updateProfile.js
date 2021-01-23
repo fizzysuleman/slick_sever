@@ -53,8 +53,8 @@ router.put('/buyer', auth, async (req, res) => {
 router.put('/seller', auth, async (req, res) => {
     const {error}=validateSeller(req.body);
 
-    let person = await RegisteredSeller.findOne({brandName:req.body.brandName})
-    let person2 = await RegisteredBuyer.findOne({username:req.body.brandName})
+    let person = await RegisteredSeller.findOne({brandName:{$regex:`^${req.body.brandName}$`,$options:'i'}})
+    let person2 = await RegisteredBuyer.findOne({username:{$regex:`^${req.body.brandName}$`,$options:'i'}})
 
     if(error){
         return res.status(400).send(error.details[0].message)

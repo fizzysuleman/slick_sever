@@ -74,14 +74,14 @@ router.post('/', async (req, res) => {
         const verificationToken = await VerificationBuyerToken.findById(req.body.tokenId)
         verificationToken.activated = true
 
-        await verificationToken.save()
+        
         //then send the successfully registered mail to the client mail
-        //const successfulMail = await successful(req.body.email, req.body.firstName, req.body.lastName).catch(console.error)
 
-        const successfulMail = await sendConfirmationMail(req.body.email, req.body.firstName, req.body.lastName).catch(error=>{res.send(`${error.message}`)})
+       // const successfulMail = await sendConfirmationMail(req.body.email, req.body.firstName, req.body.lastName).catch(error=>{res.send(`${error.message}`)})
 
-        if (successfulMail) {
-            //if it sent then send a response to the client side with the token to continue    
+       // if (successfulMail) {
+            //if it sent then send a response to the client side with the token to continue  
+            await verificationToken.save()  
             const token = buyers.generateAuthToken()
             res.json({
                 token: token,
@@ -90,7 +90,7 @@ router.post('/', async (req, res) => {
                 username: buyers.username,
                 fullName: buyers.firstName + ' ' + buyers.lastName
             })
-        }
+       // }
     }
 
 

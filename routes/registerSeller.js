@@ -69,11 +69,11 @@ if(validateBrandname){
     //save the user after hashing
    // const successfulMail=await  successful(req.body.email,req.body.firstName,req.body.lastName).catch(console.error)
 
-    const successfulMail = await sendConfirmationMail(req.body.email, req.body.firstName, req.body.lastName).catch(error=>{res.send(`${error.message}`)})
+    //const successfulMail = await sendConfirmationMail(req.body.email, req.body.firstName, req.body.lastName).catch(error=>{res.send(`${error.message}`)})
 
 
 
-if(successfulMail){
+//if(successfulMail){
     //if the user sucessfully saved then change the status of the activated account to true
     const verificationToken=await VerificationSellerToken.findById(req.body.tokenId)
     verificationToken.activated=true
@@ -94,7 +94,7 @@ if(sellers){
     })
 }
         
-}
+//}
     
 
 

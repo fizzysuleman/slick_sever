@@ -5,8 +5,9 @@ const {RegisteredSeller} =require('../models/registerSellerModel')
 const express=require('express')
 const bcrypt=require('bcrypt')
 const router=express.Router()
-const {mailer}=require('../models/mailer')
+const {sendConfirmationToken}=require('../models/mailSender')
 const { sendToken } = require('../models/messageSender')
+
 
 const jwt=require('jsonwebtoken')
 
@@ -39,13 +40,13 @@ if (validateEmail4 || validatePhone4) {
     return res.status(400).send('Email or Phone number has already been registered by a buyer')
 
 }
-    if(validatePhone3){
-        let id=await VerificationBuyerToken.findOne({phone:req.body.phone})
+    if(validateEmail3){
+        let id=await VerificationBuyerToken.findOne({email:req.body.email})
         let tokenId=id._id
         const test=await VerificationBuyerToken.findByIdAndDelete(tokenId)
     if(test){
         const verificationToken=new VerificationSellerToken({
-            phone: req.body.phone,
+            email: req.body.email,
             token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
@@ -53,10 +54,10 @@ if (validateEmail4 || validatePhone4) {
     })
     
     
-    //const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-    const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+    const sentMail=await  sendConfirmationToken(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(error=>{res.send(error.message)})
+    //const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
 
-    if(sentToken){
+    if(sentMail){
        await res.send(verificationToken._id)
        await verificationToken.save()
 
@@ -64,8 +65,8 @@ if (validateEmail4 || validatePhone4) {
     }
     }
 //else if it has already started a registration but has not finished, update the details in the db
-    else if(validatePhone2){
-        let id=await VerificationSellerToken.findOne({phone:req.body.phone})
+    else if(validateEmail2){
+        let id=await VerificationSellerToken.findOne({email:req.body.email})
         let tokenId=id._id
         
         const verificationToken=await VerificationSellerToken.findById(tokenId)
@@ -75,10 +76,10 @@ if (validateEmail4 || validatePhone4) {
         verificationToken.activated=false
 
 
-        // const sentMail=await  mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-        const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+        const sentMail=await  sendConfirmationToken(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(error=>{res.send(error.message)})
+        //const sentToken = await sendToken(req.body.phone, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
 
-    if(sentToken){
+    if(sentMail){
         await res.send(verificationToken._id)
         await verificationToken.save()
 
@@ -89,7 +90,7 @@ if (validateEmail4 || validatePhone4) {
     //else continue the process normally
     else{
         const verificationToken=new VerificationSellerToken({
-            phone: req.body.phone,
+            email: req.body.email,
             token:Math.floor(100000 + Math.random() * 900000),
             creationDate:Date(),
             expiryDate:presentDate.setDate(presentDate.getDate() + 1),
@@ -97,10 +98,10 @@ if (validateEmail4 || validatePhone4) {
     })
     
     
-    //const sentMail= await mailer(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(console.error)
-    const sentToken = await sendToken(req.body.email, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
+    const sentMail=await  sendConfirmationToken(req.body.email,verificationToken.token,req.body.firstName,req.body.lastName).catch(error=>{res.send(error.message)})
+    //const sentToken = await sendToken(req.body.email, verificationToken.token, req.body.firstName, req.body.lastName).catch(error=>{res.send(error.message)})
 
-    if(sentToken){
+    if(sentMail){
        await res.send(verificationToken._id)
        await verificationToken.save()
 

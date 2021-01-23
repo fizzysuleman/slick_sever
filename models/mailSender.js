@@ -2,14 +2,14 @@ const sgMail = require('@sendgrid/mail')
 
 
 
-async function sendConfirmationMail(email, firstName, lastName){
+async function sendConfirmationToken(email,code, firstName, lastName){
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 const msg = {
   to:  `${email}`, // Change to your recipient
   from: 'contactslickapp@gmail.com', // Change to your verified sender
-  subject: 'Successful Registration',
-  text: 'Succesful Registration',
-  html: `<p><strong>Welcome to Slick ${firstName}</strong><br></br>Congrats, you've successfully registered for Slick app<br></br>You can buy and sell merchs and clothing materials<br></br>Happy Shopping 👻<p>`,
+  subject: 'Welcome, Your Slick Verication Code',
+  text: 'Confirm registration',
+  html: `<p><strong>Welcome to Slick ${firstName}</strong><br></br>Confirm your registration with the verification code <b>${code}</b><br></br>Happy Shopping 👻<p>`,
 }
 let message=sgMail
   .send(msg)
@@ -32,6 +32,6 @@ async function forgotPassword(email, username, token){
     return message
   }
 
-exports.sendConfirmationMail=sendConfirmationMail
+exports.sendConfirmationToken=sendConfirmationToken
 exports.forgotPassword=forgotPassword
 

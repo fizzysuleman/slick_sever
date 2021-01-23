@@ -25,20 +25,20 @@ const tokenSchema=new mongoose.Schema({
         type: Boolean,
         required:true
        },
-       phone: {
-        type: String,
-        required: true,
-        // minlength: 5,
-        // maxlength: 255,
-        unique: false
-      },    
-      // email: {
+      //  phone: {
       //   type: String,
       //   required: true,
-      //   minlength: 5,
-      //   maxlength: 255,
+      //   // minlength: 5,
+      //   // maxlength: 255,
       //   unique: false
       // },    
+      email: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255,
+        unique: false
+      },    
 
 })
 

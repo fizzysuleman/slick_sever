@@ -9,7 +9,10 @@ const router = express.Router();
 router.get('/tags', auth, async (req, res) => {
 
   try{
-  var regex = new RegExp(req.query.searchTerm, 'i')
+    RegExp.escape = function(s) {
+      return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+    var regex  = new RegExp(RegExp.escape(req.query.searchTerm), "i")
 
   return Post.find({
     '$or':
@@ -37,7 +40,7 @@ router.get('/tags', auth, async (req, res) => {
     })
   }
   catch (ex) {
-     res.status(500).send('Something failed from the server.')
+     res.status(500).send(ex.message)
   }
 
 })
@@ -45,7 +48,10 @@ router.get('/tags', auth, async (req, res) => {
 
 router.get('/sellers', auth, async (req, res) => {
   try{
-  var regex = new RegExp(req.query.searchTerm, 'i')
+    RegExp.escape = function(s) {
+      return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+    var regex  = new RegExp(RegExp.escape(req.query.searchTerm), "i")
 
   return RegisteredSeller.find({
     '$or':
@@ -76,7 +82,11 @@ router.get('/sellers', auth, async (req, res) => {
 
 router.get('/availableIn', auth, async (req, res) => {
 try{
-  var regex = new RegExp(req.query.searchTerm, 'i')
+
+  RegExp.escape = function(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+  var regex  = new RegExp(RegExp.escape(req.query.searchTerm), "i")
 
   return Post.find({
     '$or':
@@ -107,6 +117,7 @@ try{
 
   function filter(q, letter) {
     var filtered = q.filter(function (word) {
+      console.log(word.location)
       return word.location.toLowerCase().indexOf(letter.toLowerCase()) > -1
     })
     return (filtered)
@@ -114,14 +125,17 @@ try{
 
 }
 catch (ex) {
-   res.status(500).send('Something failed from the server.')
+   res.status(500).send(ex.message)
 }
 
 })
 
 router.get('/availableInSchool', auth, async (req, res) => {
 try{
-  var regex = new RegExp(req.query.searchTerm, 'i')
+  RegExp.escape = function(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+  var regex  = new RegExp(RegExp.escape(req.query.searchTerm), "i")
 
   return Post.find({
     '$or':

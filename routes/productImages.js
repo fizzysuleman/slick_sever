@@ -35,7 +35,6 @@ router.post('/', auth, async (req, res) => {
       api_secret: 'frx3566ti2x2grSSVX7DtJXzTa4'
     })
 
-    console.log(req.files)
 
 
     let res_promises = req.files.map(async file => new Promise(async (resolve, reject) => {
@@ -81,7 +80,9 @@ router.post('/', auth, async (req, res) => {
     // Promise.all will fire when all promises are resolved 
     Promise.all(res_promises)
       .then(result => res.send({ 'response': result }))
-      .catch((error) => { res.status(400).send(error.message) })
+      .catch((error) => { 
+        console.log(error.message)
+        res.status(400).send(error.message) })
   })
 
 

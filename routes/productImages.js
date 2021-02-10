@@ -77,7 +77,7 @@ router.post('/', auth, async (req, res) => {
     })
 
     )
-    // Promise.all will fire when all promises are resolved 
+    // Pomise.all will fire when all promises are resolved 
     Promise.all(res_promises)
       .then(result => res.send({ 'response': result }))
       .catch((error) => { 

@@ -54,7 +54,7 @@ router.post('/', auth, async (req, res) => {
       cloudinary
         .v2
         .uploader
-        .upload((file.size <= MAX_SIZE) ? file.path :`editedImages\\${editedFileName}`,
+        .upload((file.size <= MAX_SIZE) ? file.path :`editedImages/${editedFileName}`,
           {
             quality:20,
             use_filename: true,

@@ -63,12 +63,12 @@ router.post('/', auth, async (req, res) => {
           },
           function (error, result) {
             if (error) {
-              (file.size > MAX_SIZE)?fs.unlinkSync(`editedImages\\${editedFileName}`):fs.unlinkSync(file.path)
+              (file.size > MAX_SIZE)?fs.unlinkSync(`editedImages/${editedFileName}`):fs.unlinkSync(file.path)
               reject(error)
             }
             else {
               //const fs = require('fs')
-              (file.size > MAX_SIZE)?fs.unlinkSync(`editedImages\\${editedFileName}`):fs.unlinkSync(file.path)
+              (file.size > MAX_SIZE)?fs.unlinkSync(`editedImages/${editedFileName}`):fs.unlinkSync(file.path)
               resolve(result.url)
             }
 
